@@ -1,68 +1,92 @@
 # Weather-Dashboard
+# 06 Server-Side APIs: Weather Dashboard
 
-# Unit 07: Project 1
+## Your Task
 
-## Overview
+Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
 
-Welcome to Project 1! This is an important step in your full-stack journey as you will now use your newly acquired skills and knowledge to build web application from scratch. With your team, you will conceive and execute a design that solves a real-world problem by integrating data received from multiple server-side API requests. 
+Use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) to retrieve weather data for cities. Read through the documentation for setup and usage instructions. You will use `localStorage` to store any persistent data. For more information on how to work with the OpenWeather API, refer to the [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys).
 
-Because you will be working collaboratively, you will learn agile development methodologies and implement feature and bug fixes using git branch workflow and pull requests.
+## User Story
 
-## Key Topics
+```
+AS A traveler
+I WANT to see the weather outlook for multiple cities
+SO THAT I can plan a trip accordingly
+```
 
-The following topics will be covered in this unit:
+## Acceptance Criteria
 
-* [Server-side APIs](https://en.wikipedia.org/wiki/Web_API)
+```
+GIVEN a weather dashboard with form inputs
+WHEN I search for a city
+THEN I am presented with current and future conditions for that city and that city is added to the search history
+WHEN I view current weather conditions for that city
+THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
+WHEN I view the UV index
+THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
+WHEN I view future weather conditions for that city
+THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
+WHEN I click on a city in the search history
+THEN I am again presented with current and future conditions for that city
+```
 
-* [Git branching workflow](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows)
+## Mock-Up
 
-* [Agile software development](https://en.wikipedia.org/wiki/Agile_software_development)
+The following image shows the web application's appearance and functionality:
 
-## Learning Objectives
+![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./Assets/06-server-side-apis-homework-demo.png)
 
-You will be employer-ready if you are able to:
+## Grading Requirements
 
-* Speak technically about a feature you implemented in your project
+This homework is graded based on the following criteria: 
 
-* Explain and execute git branching workflow in a collaborative project
+### Technical Acceptance Criteria: 40%
 
-* Resolve merge conflicts
+* Satisfies all of the above acceptance criteria plus the following:
 
-* Explain agile software development
+    * Uses the OpenWeather API to retrieve weather data.
 
-* Design, build, and deploy a client-side web application using GitHub Pages
+    * Uses `localStorage` to store persistent data.
 
-* Prepare a professional presentation and repository README for your project
+### Deployment: 32%
 
-## Homework
+* Application deployed at live URL.
 
-With your team, you'll conceive and execute a design that solves a real-world problem by integrating data received from multiple server-side API requests. You will also learn about agile development methodologies to help you work collaboratively. You will implement feature and bug fixes using git branch workflow and pull requests. 
+* Application loads with no errors.
 
-You will write your own user stories and acceptance criteria in GitHub Issues to help your team stay on track with the project. Using GitHub Project as a means to track the status of your project tasks will help you understand the benefits of Kanban boards. 
+* Application GitHub URL submitted.
 
-## Career Connection
+* GitHub repository that contains application code.
 
-For more information about Career Services, including coding milestones, demo days, technical toolkits, workshops, and additional resources, visit the [Career Services website](https://mycareerspot.org/).
+### Application Quality: 15%
 
-## Heads-Up
+* Application user experience is intuitive and easy to navigate.
 
-In the next unit, you'll continue to work on your group projects. You'll end the week by presenting your project to your class. Once your project is complete, you'll want to update your professional materials and add your new project to your portfolio.
+* Application user interface style is clean and polished.
 
-## Resources
+* Application resembles the mock-up functionality provided in the homework instructions.
 
-Here are some additional resources to help solidify the topics covered in this unit.
+### Repository Quality: 13%
 
-### Full-Stack Blog Posts
+* Repository has a unique name.
 
-Check out the [Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/) for additional resources, like walkthroughs, articles, and installation guides.
+* Repository follows best practices for file structure and naming conventions.
 
-  * 📖 [API Resources](https://coding-boot-camp.github.io/full-stack/apis/api-resources)
+* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
 
-### General
+* Repository contains multiple descriptive commit messages.
 
-Refer to these resources for additional information about topics covered in this unit.
+* Repository contains quality readme file with description, screenshot, and link to deployed application.
 
-  * 📖 [Learn Enough Git to Be Dangerous](https://www.learnenough.com/git-tutorial/getting_started)
+## Review
+
+You are required to submit BOTH of the following for review:
+
+* The URL of the functional, deployed application.
+
+* The URL of the GitHub repository. Give the repository a unique name and include a readme describing the project.
 
 - - -
 © 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+
