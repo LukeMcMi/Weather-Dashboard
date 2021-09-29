@@ -1,8 +1,5 @@
 <!DOCTYPE <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -44,7 +41,92 @@
                 </div>
             </aside>
         </div>
-
+        
+        <!-- Main area -->
+        <main class="col-md-9">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Jumbotron for today's weather -->
+                    <div class="jumbotron">
+                        <h1 class="display-3" id="locationName">
+                            <i class="fa fa-arrow-circle-o-left" id="arrowImg" style="font-size: large;">
+                            </i>
+                            Search for a city
+                        </h1>
+                        <h3 class="currentDate"><img id="currentImg" /></h3>
+                        <hr />
+                        <div class="row">
+                            <!-- Table for todays weather metrics -->
+                            <table class="table table-hover col-xl-4">
+                                <tr class="table-primary">
+                                    <th scope="row">Temp</th>
+                                    <td id="tempData"></td>
+                                </tr>
+                                <tr class="table-primary">
+                                    <th scope="row">Humidity</th>
+                                    <td id="humidityData"></td>
+                                </tr>
+                                <tr class="table-primary">
+                                    <th scope="row">Wind Speed<i class="fa fa-arrow-down" id="windArrow"></i>
+                                    </th>
+                                    <td id="windData"></td>
+                                </tr>
+                                <tr class="table-primary">
+                                    <th scope="uvRow">UV Index</th>
+                                    <td class="uvRow" id="uvData"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cards for 5 day forecast -->
+                <div class="col-md-12">
+                    <h1>5-Day Forecast</h1>
+                    <div class="card-container">
+                        <div class="card text-white bg-primary mb-3" style="max-width: 15rem;">
+                            <div class="card-header" id="1stDate"></div>
+                            <div class="card-body">
+                                <img id="1stimg" />
+                                <p class="card-text" id="1stTemp"></p>
+                                <p class="card-text" id="1stHumid"></p>
+                            </div>
+                        </div>
+                        <div class="card text-white bg-primary mb-3" style="max-width: 15rem;">
+                            <div class="card-header" id="2ndDate"></div>
+                            <div class="card-body">
+                                <img id="2ndimg" />
+                                <p class="card-text" id="2ndTemp"></p>
+                                <p class="card-text" id="2ndHumid"></p>
+                            </div>
+                        </div>
+                        <div class="card text-white bg-primary mb-3" style="max-width: 15rem;">
+                            <div class="card-header" id="3rdDate"></div>
+                            <div class="card-body">
+                                <img id="3rdimg" />
+                                <p class="card-text" id="3rdTemp"></p>
+                                <p class="card-text" id="3rdHumid"></p>
+                            </div>
+                        </div>
+                        <div class="card text-white bg-primary mb-3" style="max-width: 15rem;">
+                            <div class="card-header" id="4thDate"></div>
+                            <div class="card-body">
+                                <img id="4thimg" />
+                                <p class="card-text" id="4thTemp"></p>
+                                <p class="card-text" id="4thHumid"></p>
+                            </div>
+                        </div>
+                        <div class="card text-white bg-primary mb-3" style="max-width: 15rem;">
+                            <div class="card-header" id="5thDate"></div>
+                            <div class="card-body">
+                                <img id="5thimg" />
+                                <p class="card-text" id="5thTemp"></p>
+                                <p class="card-text" id="5thHumid"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     
         
         
