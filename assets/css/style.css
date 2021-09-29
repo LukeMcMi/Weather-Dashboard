@@ -1,0 +1,17 @@
+header{
+    text-align: center;
+    color: #033333;
+}
+aside {
+    border-radius: 15px;
+    background-color: #047ef0;
+    border: 1.5px solid #022222;
+}
+
+
+
+.card-container {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
