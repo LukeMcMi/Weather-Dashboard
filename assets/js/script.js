@@ -45,4 +45,23 @@ const renderButton = () => {
     }
 };
 
-// 
+// Gets loacal storage for search history array
+constinit = () => {
+    let savedCities = JSON.parse(localStorage.getITEM("searchHistory"));
+    if (savedCities !==null) {
+        searchHistory = savedCities;
+    }
+
+    // render buttons
+    renderButton()
+};
+
+// Add searched city to local storage
+const storeCities = () =>
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+
+// --------------
+// API calls for weather data
+// --------------
+
+// API call for 
