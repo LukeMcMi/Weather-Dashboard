@@ -19,9 +19,9 @@
         <!-- Main container -->
         <div class="row wrapper">
             <!-- aside for search bar and history -->
-            <aside class="col-md-3">
+            <aside class="col-lg-3">
                 <!-- container for search form -->
-                <div class="container">
+                <div class="container-fluid">
                     <h1>Enter City: </h1>
                     <hr>
                     <form class="form-inline my-2 my-lg-0">
@@ -33,98 +33,99 @@
                     <div class="container prevSearchEl"></div>
                 </div>
             </aside>
-        </div>
         
-        <!-- Main area -->
-        <main class="col-md-9">
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Jumbotron for today's weather -->
-                    <div class="jumbotron">
-                        <h1 class="display-3" id="cityName">
-                            <i class="fa fa-arrow-circle-o-left" id="arrowImg" style="font-size: large;">
-                            </i>
-                            Search for a city
-                        </h1>
-                        <h3 class="currentDate"><img id="currentImg"/></h3>
-                        <hr/>
-                        <div class="row">
-                            <!-- Table for todays weather metrics -->
-                            <table class="table table-hover col-xl-4">
-                                <tr class="table-primary">
-                                    <th scope="row">Temp</th>
-                                    <td id="tempData"></td>
-                                </tr>
-                                <tr class="table-primary">
-                                    <th scope="row">Humidity</th>
-                                    <td id="humidityData"></td>
-                                </tr>
-                                <tr class="table-primary">
-                                    <th scope="row">Wind Speed<i class="fa fa-arrow-down" id="windArrow"></i>
-                                    </th>
-                                    <td id="windData"></td>
-                                </tr>
-                                <tr class="table-primary">
-                                    <th class= "uvRow" scope="row">UV Index</th>
-                                    <td class="uvRow" id="uvData"></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!-- Cards for 5 day forecast -->
-                <div class="col-md-12">
-                    <h1>5-Day Forecast</h1>
-                    <div class="card-container">
-                        <div class="card text-white mb-3" style="max-width: 15rem;">
-                            <div class="card-header" id="1date"></div>
-                            <div class="card-body">
-                                <img id="1img" />
-                                <p class="card-text" id="1humid"></p>
-                                <p class="card-text" id="1wind"></p>
-                                <p class="card-text" id="1temp"></p>
-                            </div>
-                        </div>
-                        <div class="card text-white mb-3" style="max-width: 15rem;">
-                            <div class="card-header" id="2date"></div>
-                            <div class="card-body">
-                                <img id="2img" />
-                                <p class="card-text" id="2temp"></p>
-                                <p class="card-text" id="2wind"></p>
-                                <p class="card-text" id="2humid"></p>
-                            </div>
-                        </div>
-                        <div class="card text-white mb-3" style="max-width: 15rem;">
-                            <div class="card-header" id="3date"></div>
-                            <div class="card-body">
-                                <img id="3img" />
-                                <p class="card-text" id="3temp"></p>
-                                <p class="card-text" id="3wind"></p>
-                                <p class="card-text" id="3humid"></p>
-                            </div>
-                        </div>
-                        <div class="card text-white mb-3" style="max-width: 15rem;">
-                            <div class="card-header" id="4date"></div>
-                            <div class="card-body">
-                                <img id="4img" />
-                                <p class="card-text" id="4temp"></p>
-                                <p class="card-text" id="4wind"></p>
-                                <p class="card-text" id="4humid"></p>
-                            </div>
-                        </div>
-                        <div class="card text-white mb-3" style="max-width: 15rem;">
-                            <div class="card-header" id="5date"></div>
-                            <div class="card-body">
-                                <img id="5img" />
-                                <p class="card-text" id="5temp"></p>
-                                <p class="card-text" id="5wind"></p>
-                                <p class="card-text" id="5humid"></p>
+        
+            <!-- Main area -->
+            <main class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Jumbotron for today's weather -->
+                        <div class="jumbotron">
+                            <h1 class="display-3" id="cityName">
+                                <i class="fa fa-arrow-circle-o-left" id="arrowImg" style="font-size: large;">
+                                </i>
+                                Search for a city
+                            </h1>
+                            <h3 class="currentDate"><img id="currentImg"/></h3>
+                            <hr/>
+                            <div class="row">
+                                <!-- Table for todays weather metrics -->
+                                <table class="table table-hover col-xl-4">
+                                    <tr class="table-primary">
+                                        <th scope="row">Temp</th>
+                                        <td id="tempData"></td>
+                                    </tr>
+                                    <tr class="table-primary">
+                                        <th scope="row">Humidity</th>
+                                        <td id="humidityData"></td>
+                                    </tr>
+                                    <tr class="table-primary">
+                                        <th scope="row">Wind Speed<i class="fa fa-arrow-down" id="windArrow"></i>
+                                        </th>
+                                        <td id="windData"></td>
+                                    </tr>
+                                    <tr class="table-primary">
+                                        <th class= "uvRow" scope="row">UV Index</th>
+                                        <td class="uvRow" id="uvData"></td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
+                    <!-- Cards for 5 day forecast -->
+                    <div class="col-md-12">
+                        <h1>5-Day Forecast</h1>
+                        <div class="card-container">
+                            <div class="card text-white mb-3" style="max-width: 15rem;">
+                                <div class="card-header" id="1date"></div>
+                                <div class="card-body">
+                                    <img id="1img" />
+                                    <p class="card-text" id="1humid"></p>
+                                    <p class="card-text" id="1wind"></p>
+                                    <p class="card-text" id="1temp"></p>
+                                </div>
+                            </div>
+                            <div class="card text-white mb-3" style="max-width: 15rem;">
+                                <div class="card-header" id="2date"></div>
+                                <div class="card-body">
+                                    <img id="2img" />
+                                    <p class="card-text" id="2temp"></p>
+                                    <p class="card-text" id="2wind"></p>
+                                    <p class="card-text" id="2humid"></p>
+                                </div>
+                            </div>
+                            <div class="card text-white mb-3" style="max-width: 15rem;">
+                                <div class="card-header" id="3date"></div>
+                                <div class="card-body">
+                                    <img id="3img" />
+                                    <p class="card-text" id="3temp"></p>
+                                    <p class="card-text" id="3wind"></p>
+                                    <p class="card-text" id="3humid"></p>
+                                </div>
+                            </div>
+                            <div class="card text-white mb-3" style="max-width: 15rem;">
+                                <div class="card-header" id="4date"></div>
+                                <div class="card-body">
+                                    <img id="4img" />
+                                    <p class="card-text" id="4temp"></p>
+                                    <p class="card-text" id="4wind"></p>
+                                    <p class="card-text" id="4humid"></p>
+                                </div>
+                            </div>
+                            <div class="card text-white mb-3" style="max-width: 15rem;">
+                                <div class="card-header" id="5date"></div>
+                                <div class="card-body">
+                                    <img id="5img" />
+                                    <p class="card-text" id="5temp"></p>
+                                    <p class="card-text" id="5wind"></p>
+                                    <p class="card-text" id="5humid"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </main>
+        </div>
+    </main>
 
     <!-- Script for JQuery, moment, popper and bootstrap -->
     <script

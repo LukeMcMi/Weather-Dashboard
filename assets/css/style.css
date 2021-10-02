@@ -59,7 +59,7 @@ aside {
     margin-left: .5rem;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 768px) {
     #arrowImg {
         display: none;
     }
