@@ -1,17 +1,66 @@
-header{
-    text-align: center;
-    color: #033333;
+body {
+    color: rgb(196, 193, 193);
+    background-color: indigo;
 }
+
+header {
+    text-align: center;
+    color: #8d6ca0;
+    background-color: indigo;
+    font-size: 50px;
+}
+
 aside {
     border-radius: 15px;
-    background-color: #047ef0;
-    border: 1.5px solid #022222;
+    background-color: blueviolet;
+    border: 1px solid #022222;
 }
 
+.jumbotron {
+    background-color: transparent;
+    padding-top: 1rem;
+}
+.currentImg {
+    background-color: transparent;
+}
 
+.table {
+    width: 100%;
+}
+.table th {
+    white-space: nowrap;
+}
+.table td {
+    width: 75%;
+}
+
+.container {
+    margin: 2rem auto;
+}
+.card {
+    display: inline-block;
+    width: 100%;
+    border-radius: 15px;
+    background-color: blueviolet;
+}
 
 .card-container {
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.btn {
+    background-color: indigo;
+    color: rgb(196, 193, 193);
+}
+
+#clearBtn {
+    margin-left: .5rem;
+}
+
+@media only screen and (max-width: 750px) {
+    #arrowImg {
+        display: none;
+    }
 }

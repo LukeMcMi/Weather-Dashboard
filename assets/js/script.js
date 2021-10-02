@@ -2,7 +2,7 @@ $(document).ready(function() {
      var searchHistory = [];  
 
     // set current date in jumbotron
-    const today = moment().format("dddd, MMMM Do");
+    const today = moment().format("dddd , MMMM Do");
     $(".currentDate").prepend(today);
     
     console.log(today);
@@ -11,7 +11,7 @@ $(document).ready(function() {
     // Date for the 5 day forecast
 
     for (var i = 1; i <6; i++) {
-        $(`#${i}Date`).text(moment().add(i, "d").format("dddd,MMMM Do"));
+        $(`#${i}date`).text(moment().add(i, "d").format("ddd Do MMM"));
     }    
     // event listeners
 
@@ -60,7 +60,7 @@ const renderButtons = () => {
     $(".prevSearchEl").html("");
     for (var j = 0; j < searchHistory.length; j++) {
         let cityName1 = searchHistory[j];
-        let historyBtn = $('<button type="button" class="btn btn-primary bt-lg btn-block historyBtn">').text(cityName1);
+        let historyBtn = $('<button type="button" class="btn bt-lg btn-block historyBtn">').text(cityName1);
         $('.prevSearchEL').prepend(historyBtn);
     }
 };
@@ -122,7 +122,10 @@ const fiveDay = (lon, lat) => {
                 `http://openweathermap.org/img/wn/${fiveResponse.daily[k].weather[0].icon}@2x.png`
             );
             $(`#${k}temp`).html(
-                `Temp: ${fiveResponse.daily[k].temp.day} &#8457;`
+                `Temp: ${fiveResponse.daily[k].temp.day} \u2103`
+            );
+            $(`#${k}wind`).html(
+                `Wind: ${fiveResponse.daily[k].wind_speed} km/h`
             );
             $(`#${k}humid`).html(
                 `Humidity: ${fiveResponse.daily[k].humidity}%`
@@ -149,14 +152,14 @@ const call = (btnCityName) => {
         var lat = response.coord.lat;
         $('#cityName').text(response.name);
         $('#currentImg').attr(
-            'scr',
+            'src',
             `http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`
         );
-        $('#tempData').html(`${response.main.temp} &#8457`);
+        $('#tempData').html(`${response.main.temp} \u2103`);
         $('#humidityData').html(`${response.main.humidity}%`);
-        $('#windData').html(`${response.wind.speed}kph`);
+        $('#windData').html(`${response.wind.speed} km/h`);
         $('#windArrow').css({
-            transform: `rotate(${response.wind.deg}deg)`,
+            transform: `rotate(${response.wind.deg} deg)`,
         });
         uvCall(lon, lat);
         fiveDay(lon, lat);
