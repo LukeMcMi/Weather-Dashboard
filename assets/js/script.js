@@ -134,7 +134,7 @@ const fiveDay = (lon, lat) => {
     });
 };
 
-// API call for current day stats from search bar or history button
+// API call for current day stats from search bar or history button.
 const call = (btnCityName) => {
     let cityName = btnCityName || $('input').val();
     let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=fc4d1d2def1bebc7c47b15a5044ff21e`;
@@ -159,7 +159,7 @@ const call = (btnCityName) => {
         $('#humidityData').html(`${response.main.humidity}%`);
         $('#windData').html(`${response.wind.speed} km/h`);
         $('#windArrow').css({
-            transform: `rotate(${response.wind.deg} deg)`,
+            transform: `rotate(${response.wind.deg}deg)`,
         });
         uvCall(lon, lat);
         fiveDay(lon, lat);
