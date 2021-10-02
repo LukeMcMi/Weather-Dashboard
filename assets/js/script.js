@@ -84,3 +84,39 @@ const uvCall = (lon, lat) => {
         }
     });
 };
+
+// API call for current day stats from search bar or history button
+const call = (btnCityName) => {
+    let cityName = btnCityName || $('input').val();
+    let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=fc4d1d2def1bebc7c47b15a5044ff21e`;
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+    })
+    .then(function(response) {
+        if (!btnCityName) {
+            searchHistory.unshift(cityName);
+            storeCities();
+            renderButton();
+        }
+        var lon = response.coord.lon;
+        var lat = response.coord.lat;
+        $('#cityName').text(response.name);
+        $('#currentImg').attr(
+            'scr',
+            `http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`
+        );
+        $('#tempData').html(`${response.main.temp} &#8457`);
+        $('#humidityData').html(`${response.main.humidity}%`);
+        $('#windData').html(`${response.wind.speed}kph`);
+        $('#windArrow').css({
+            transform: `rotate(${respones.wind.deg}deg)`,
+        })
+        .catch(function(error) {
+            alert("Enter a valid city");
+        });
+    };
+
+    call(searchHistory[0]);
+
+});
