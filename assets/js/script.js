@@ -4,6 +4,7 @@ $(document).ready(function() {
     // set current date in jumbotron
     const today = moment().format("dddd, MMMM Do");
     $(".currentDate").prepend(today);
+    
     console.log(today);
 
 
@@ -15,7 +16,7 @@ $(document).ready(function() {
     // event listeners
 
     // Submit event on secrch form
-    $("form").on("submit"), function(event){
+    $("form").on("submit", function(event){
         event.preventDefault();
         let city = $("input").val();
         if (city === "") {
@@ -23,7 +24,8 @@ $(document).ready(function() {
         }
         // Call data from API 
         call();
-        $('form'[0].reset();
+
+        $('form')[0].reset();
     });
     
     // Click event for search history buttons
@@ -49,30 +51,32 @@ $(document).ready(function() {
         window.localStorage.clear();
         $('.prevSearchEl').empty();
         prevSerch = [];
-        renderButton();
+        renderButtons();
         $('form')[0].reset();
     });
 
 // Create buttons for cities that have been searched.
-const renderButton = () => {
-    $(".prevSearchEL").html("");
+const renderButtons = () => {
+    $(".prevSearchEl").html("");
     for (var j = 0; j < searchHistory.length; j++) {
         let cityName1 = searchHistory[j];
-        let historyBtn = $('<button type="button" class="btn btn-primary bt-lg btn-block historyBtn">').text(btnCityName);
+        let historyBtn = $('<button type="button" class="btn btn-primary bt-lg btn-block historyBtn">').text(cityName1);
         $('.prevSearchEL').prepend(historyBtn);
     }
 };
 
 // Gets loacal storage for search history array
 const init = () => {
-    let savedCities = JSON.parse(localStorage.getITEM("searchHistory"));
-    if (savedCities !==null) {
+    let savedCities = JSON.parse(localStorage.getItem("searchHistory"));
+    if (savedCities !== null) {
         searchHistory = savedCities;
     }
 
     // render buttons
-    renderButton()
+    renderButtons();
 };
+
+init();
 
 // Add searched city to local storage
 const storeCities = () =>
@@ -84,10 +88,11 @@ const storeCities = () =>
 
 // API call for UV index and color coding
 const uvCall = (lon, lat) => {
+    let uvQueryURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&units=metric&appid=fc4d1d2def1bebc7c47b15a5044ff21e`;
     $.ajax({
         url: uvQueryURL,
         method: "GET",
-    }).then(function(uvResponse) {
+    }).then(function (uvResponse) {
         $('#uvData').html(`${uvResponse.value}`);
         if (uvResponse.value <= 2) {
             $('.uvRow').css('background-color', 'green');
@@ -101,42 +106,6 @@ const uvCall = (lon, lat) => {
             $('.uvRow').css('background-color', 'violet')
         }
     });
-};
-
-// API call for current day stats from search bar or history button
-const call = (btnCityName) => {
-    let cityName = btnCityName || $('input').val();
-    let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=fc4d1d2def1bebc7c47b15a5044ff21e`;
-    $.ajax({
-        url: queryURL,
-        method: "GET",
-    })
-    .then(function(response) {
-        if (!btnCityName) {
-            searchHistory.unshift(cityName);
-            storeCities();
-            renderButton();
-        }
-        var lon = response.coord.lon;
-        var lat = response.coord.lat;
-        $('#cityName').text(response.name);
-        $('#currentImg').attr(
-            'scr',
-            `http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`
-        );
-        $('#tempData').html(`${response.main.temp} &#8457`);
-        $('#humidityData').html(`${response.main.humidity}%`);
-        $('#windData').html(`${response.wind.speed}kph`);
-        $('#windArrow').css({
-            transform: `rotate(${respones.wind.deg}deg)`,
-        })
-        .catch(function(error) {
-            alert("Enter a valid city");
-        });
-    });
-
-    call(searchHistory[0]);
-
 };
 
 // Call for 5 day forecast
@@ -162,3 +131,41 @@ const fiveDay = (lon, lat) => {
     });
 };
 
+// API call for current day stats from search bar or history button
+const call = (btnCityName) => {
+    let cityName = btnCityName || $('input').val();
+    let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=fc4d1d2def1bebc7c47b15a5044ff21e`;
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+    })
+    .then(function(response) {
+        if (!btnCityName) {
+            searchHistory.unshift(cityName);
+            storeCities();
+            renderButtons();
+        }
+        var lon = response.coord.lon;
+        var lat = response.coord.lat;
+        $('#cityName').text(response.name);
+        $('#currentImg').attr(
+            'scr',
+            `http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`
+        );
+        $('#tempData').html(`${response.main.temp} &#8457`);
+        $('#humidityData').html(`${response.main.humidity}%`);
+        $('#windData').html(`${response.wind.speed}kph`);
+        $('#windArrow').css({
+            transform: `rotate(${response.wind.deg}deg)`,
+        });
+        uvCall(lon, lat);
+        fiveDay(lon, lat);
+    })
+        .catch(function (error) {
+            alert("Enter a valid city");
+        });
+    };
+
+    call(searchHistory[0]);
+
+});
