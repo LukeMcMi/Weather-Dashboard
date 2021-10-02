@@ -64,4 +64,23 @@ const storeCities = () =>
 // API calls for weather data
 // --------------
 
-// API call for 
+// API call for UV index and color coding
+const uvCall = (lon, lat) => {
+    $.ajax({
+        url: uvQueryURL,
+        method: "GET",
+    }).then(function(uvResponse) {
+        $('#uvData').html(`${uvResponse.value}`);
+        if (uvResponse.value <= 2) {
+            $('.uvRow').css('background-color', 'green');
+        } else if (uvResponse.value >2 && uvResponse.value <=5) {
+            $('.uvRow').css('background-color', 'yellow');
+        } else if (uvResponse.value >5 && uvResponse.value <=7) {
+            $('.uvRow').css('background-color', 'orange');
+        } else if (uvResponse.value >7 && uvResponse.value <=10) {
+            $('.uvRow').css('background-color', 'red');
+        } else {
+            $('.uvRow').css('background-color', 'violet')
+        }
+    });
+};
