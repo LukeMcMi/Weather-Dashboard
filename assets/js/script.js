@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     // set current date in jumbotron
     const today = moment().format("dddd, MMMM Do");
-    $("#currentDate").prepend(today);
+    $(".currentDate").prepend(today);
     console.log(today);
 
 
@@ -23,30 +23,48 @@ $(document).ready(function() {
         }
         // Call data from API 
         call();
-        // 
-    }
+        $('form'[0].reset();
+    });
+    
+    // Click event for search history buttons
+    $('.prevSearchEl').on('click', '.historyBtn', function (event) {
+        event.preventDefault();
+        let btnCityName = $(this).text();
+        call(btnCityName);
+    });
 
-    // click event search history
-$(".searchHistoryEl").on("click"), function (event) {
-    event.preventDefault();
-    let btnCityName = $(this).text();
-    // call data from API
-    call(btnCityName);
+//     // click event search history
+//     $(".prevSearchEl").on("click"), function (event) {
+//         event.preventDefault();
+//         let btnCityName = $(this).text();
+//         // call data from API
+//         call(btnCityName);
 
-}});
+// });
+
+
+    // Clear button for history
+    $('#clearBtn').on('click', function (event) {
+        event.preventDefault();
+        window.localStorage.clear();
+        $('.prevSearchEl').empty();
+        prevSerch = [];
+        renderButton();
+        $('form')[0].reset();
+    });
 
 // Create buttons for cities that have been searched.
 const renderButton = () => {
-    $(".searchHistoryEL").html("");
+    $(".prevSearchEL").html("");
     for (var j = 0; j < searchHistory.length; j++) {
         let cityName1 = searchHistory[j];
         let historyBtn = $('<button type="button" class="btn btn-primary bt-lg btn-block historyBtn">').text(btnCityName);
-        $('.searchHistoryEL').prepend(historyBtn);
+        $('.prevSearchEL').prepend(historyBtn);
     }
 };
 
 // Gets loacal storage for search history array
-constinit = () => {
+const init = () => {
     let savedCities = JSON.parse(localStorage.getITEM("searchHistory"));
     if (savedCities !==null) {
         searchHistory = savedCities;
@@ -88,7 +106,7 @@ const uvCall = (lon, lat) => {
 // API call for current day stats from search bar or history button
 const call = (btnCityName) => {
     let cityName = btnCityName || $('input').val();
-    let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=fc4d1d2def1bebc7c47b15a5044ff21e`;
+    let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=fc4d1d2def1bebc7c47b15a5044ff21e`;
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -115,8 +133,32 @@ const call = (btnCityName) => {
         .catch(function(error) {
             alert("Enter a valid city");
         });
-    };
+    });
 
     call(searchHistory[0]);
 
-});
+};
+
+// Call for 5 day forecast
+const fiveDay = (lon, lat) => {
+    let fiveQueryURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=fc4d1d2def1bebc7c47b15a5044ff21e`;
+
+    $.ajax({
+        url: fiveQueryURL,
+        method: 'GET',
+    }).then(function (fiveResponse) {
+        for (var k = 1; k < 6; k++) {
+            $(`#${k}img`).attr(
+                'src',
+                `http://openweathermap.org/img/wn/${fiveResponse.daily[k].weather[0].icon}@2x.png`
+            );
+            $(`#${k}temp`).html(
+                `Temp: ${fiveResponse.daily[k].temp.day} &#8457;`
+            );
+            $(`#${k}humid`).html(
+                `Humidity: ${fiveResponse.daily[k].humidity}%`
+            );
+        }
+    });
+};
+
